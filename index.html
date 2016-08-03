@@ -2,19 +2,23 @@
 <html ng-app="firstTutorial">
   <head>
     <script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
-     <script data-require="jquery@2.1.4" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script data-require="angular-route@*" data-semver="1.2.14" src="http://code.angularjs.org/1.2.14/angular-route.js"></script>
+    <script data-require="jquery@2.1.4" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <link data-require="bootstrap@3.3.2" data-semver="3.3.2" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <script data-require="bootstrap@3.3.2" data-semver="3.3.2" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="site.css" />
-    <script src="app.js"></script>    
-    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script src="SearchController.js"></script>
+    <script src="UserController.js"></script>
+    <!-- <script src="script.js"></script> -->
     <script src="github.js"></script>
   </head>
-  <body ng-controller="MainController" class="container">
+  <body class="container">
     <div id="main">
         <br />
-        <div ng-include="'search.html'"></div>
-        <div ng-include="'user.html'" ng-show="user"></div>
+<!--         <div ng-include="'search.html'"></div>
+        <div ng-include="'user.html'" ng-show="user"></div> -->
+        <div ng-view></div>
     </div>
   </body>
 </html>

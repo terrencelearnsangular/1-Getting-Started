@@ -1,8 +1,7 @@
 (function(){
+	var app = angular.module("firstTutorial");
 
-	var app = angular.module("firstTutorial", [] );
-
-	var MainController = function($scope, $log, github){
+	var UserController = function($scope, $log, $routeParams, github){
 
 		var onUserComplete = function(data){
 			$scope.user = data;
@@ -29,13 +28,10 @@
 			$log.info("Repository Error: " + $scope.reposError);			
 		};
 
-		$scope.search = function(username){
-			$log.info("Search: " + username);			
-			github.getUser(username).then(onUserComplete, onUserError);
-		};
-
-		$scope.username = "tjworkaccount";
+		$scope.username = $routeParams.username;
+		$log.info("Search: " + $scope.username);
+		github.getUser($scope.username).then(onUserComplete, onUserError);
 	};
 
-	app.controller('MainController', MainController);
+	app.controller('UserController', UserController);
 }());
