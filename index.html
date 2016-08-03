@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html ng-app="firstTutorial">
   <head>
-    <script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>    
+    <script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
+     <script data-require="jquery@2.1.4" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <link data-require="bootstrap@3.3.2" data-semver="3.3.2" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script data-require="bootstrap@3.3.2" data-semver="3.3.2" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="site.css" />
     <script src="script.js"></script>
   </head>
-  <body ng-controller="MainController">
+  <body ng-controller="MainController" class="container">
     <div id="main">
-        <div ng-show ="error">
-          {{ error }}
+        <br />
+        <div id="search" class="row">
+            <form name="searchUser" ng-submit="search(username)" class="col-xs-12">
+                <input type="search" placeholder="Search Username" ng-model="username" required="" />
+                <input type="submit" value="Search" />
+            </form>
         </div>
-        <div ng-show="user">
-            <div>
-                Name: {{user.name}}
-            </div>
-            <div>
-                Location: {{user.location}}
-            </div>
-            <div>
-                <img ng-src="{{user.avatar_url}}" title="{{user.name}}">
+        <br />
+        <div id="user-error" ng-show="userError" class="row">
+            <div id="error-message" class="col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <strong>Error</strong>
+                    </div>
+                    <div class="panel-body">
+                        {{ userError }}
+                    </div>
+                </div>
             </div>
         </div>
+        <div ng-include="'user.html'" ng-show="user"></div>
     </div>
-
   </body>
 </html>

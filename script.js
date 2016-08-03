@@ -4,18 +4,35 @@
 
 	var MainController = function($scope, $http){
 
-		var onComplete = function(response){
+		var onUserComplete = function(response){
 			$scope.user = response.data;
+			$scope.userError = null;
+
+			$http.get($scope.user.repos_url)
+				.then(onReposComplete, onReposError);
 		};
 
-		var onError = function(reason){
-			$scope.error = reason.statusText || "Request Failed";
+		var onUserError = function(reason){
+			$scope.userError = reason.statusText || "Request Failed";
+			$scope.user = null;
 		};
 
-		$http.get("https://api.github.com/users/tjworkaccount")
-			.then(onComplete, onError);
+		var onReposComplete = function(response){
+			$scope.repos = response.data;
+			$scope.reposError = null;
+		};
 
-		$scope.message = "Success";
+		var onReposError = function(reason){
+			$scope.reposError = reason.statusText || "Request Failed";
+			$scope.repos = null;
+		};
+
+		$scope.search = function(username){
+			$http.get("https://api.github.com/users/" + username)
+				.then(onUserComplete, onUserError);
+		};
+
+		$scope.username = "tjworkaccount";
 	};
 
 	app.controller('MainController', MainController);
