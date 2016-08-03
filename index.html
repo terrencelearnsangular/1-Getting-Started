@@ -6,31 +6,14 @@
     <link data-require="bootstrap@3.3.2" data-semver="3.3.2" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <script data-require="bootstrap@3.3.2" data-semver="3.3.2" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="site.css" />
+    <script src="app.js"></script>    
     <script src="script.js"></script>
     <script src="github.js"></script>
   </head>
   <body ng-controller="MainController" class="container">
     <div id="main">
         <br />
-        <div id="search" class="row">
-            <form name="searchUser" ng-submit="search(username)" class="col-xs-12">
-                <input type="search" placeholder="Search Username" ng-model="username" required="" />
-                <input type="submit" value="Search" />
-            </form>
-        </div>
-        <br />
-        <div id="user-error" ng-show="userError" class="row">
-            <div id="error-message" class="col-xs-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <strong>Error</strong>
-                    </div>
-                    <div class="panel-body">
-                        {{ userError }}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div ng-include="'search.html'"></div>
         <div ng-include="'user.html'" ng-show="user"></div>
     </div>
   </body>
