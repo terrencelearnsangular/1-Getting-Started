@@ -1,0 +1,58 @@
+<div id="top-links" class="col-xs-12">
+	<div class="row">
+		<div class="btn-group" role="group">
+			<a type="button" class="btn btn-default" href="#/search" >Back To Main Search</a>
+			<a type="button" class="btn btn-default" href="#/user/{{repo.owner.login}}">Back to {{repo.owner.login}}</a>
+		</div>
+	</div>
+</div>
+<br/>
+<br/>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div id="user-display">
+		    <div class="row">
+		        <div class="col-xs-2">
+		            <img ng-src="{{repo.owner.avatar_url}}" title="{{user.name}}" height="100" width="100">
+		        </div>
+		        <div class="col-xs-9 col-xs-push-2">
+					<div class="row">
+		                <label>Repository: </label> {{repo.name}}
+			        </div>
+			        <div class="row">
+		                <label>Owner: </label> {{repo.owner.login}}
+			        </div>
+			        <div class="row">
+		                <label>Open Issues: </label> {{repo.open_issues_count}}
+			        </div>
+			    </div>
+		    </div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div id="contributor-list">
+		    <table class="table table-hover table-bordered table-striped">
+		        <thead>
+		        	<th>Contributor List</th>
+		        </thead>
+		        <tbody>
+		            <tr ng-repeat="user in repo.contributors">
+		                <td>
+		            		<img ng-src="{{user.avatar_url}}" title="{{user.name}}" height="100" width="100">
+		                    <a href="#/user/{{user.login}}" >{{user.login}}</a> 
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+		</div>
+	</div>
+</div>
+
+<div id="bottom-links" class="col-xs-12">
+	<div class="row">
+		<div class="btn-group" role="group">
+			<a type="button" class="btn btn-default" href="#/search" >Back To Main Search</a>
+			<a type="button" class="btn btn-default" href="#/user/{{repo.owner.login}}">Back to {{repo.owner.login}}</a>
+		</div>
+	</div>
+</div>

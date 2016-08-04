@@ -10,6 +10,10 @@
                 templateUrl: "user.html",
                 controller: "UserController"
             })
+            .when("/contributor/:username/:reponame", {
+            	templateUrl:"contributor.html",
+            	controller: "ContributorController"
+            })
             .otherwise({redirectTo:"/search"});
     });
 }());
